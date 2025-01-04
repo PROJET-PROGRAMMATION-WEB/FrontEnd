@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<div class="section">test</div>
+<div *ngFor="let card of cards" class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <!-- Colonne pour l'image -->
+    <div class="col-md-4">
+      <img [src]="card.imageUrl" class="img-fluid rounded-start" [alt]="card.title" />
+    </div>
+
+    <!-- Colonne pour les caractéristiques -->
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.text }}</p>
+        <p class="card-text">Réalisé par <strong>{{ card.styliste }}</strong></p>
+        
+        <!-- Bouton pour ajouter au panier -->
+        <button  class="btn btn-primary">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>

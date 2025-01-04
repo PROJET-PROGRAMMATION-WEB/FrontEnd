@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div id="conteneur">
+    <!-- Premier bloc (Panier) -->
+    <div class="contenue">
+      <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <h2 class="mb-4">Mon Panier</h2>
+  
+        <!-- Liste des articles -->
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">Article</th>
+                <th class="text-center">Prix</th>
+                <th class="text-center">Quantité</th>
+                <th class="text-center">Options</th>
+                <th class="text-center">Sous-total</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td class="text-center">{{ item.name }}</td>
+                <td class="text-center">{{ item.price }}</td>
+                <td class="text-center">{{ item.quantity }}</td>
+                <td class="text-center">{{ item.options }}</td>
+                <td class="text-center">{{ (item.price * item.quantity) }}</td>
+                <td class="text-center">
+                  <button class="btn btn-danger btn-sm" (click)="removeItem(item)">Supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Résumé du coût total -->
+        <div class="d-flex justify-content-end mt-4">
+          <div>
+            <h5 class="display-4">Total : {{ getTotalCost() }} FCFA</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Deuxième bloc (Informations de paiement) -->
+    <div class="contenue d-flex flex-column align-items-center">
+      <h3 class="mb-4">Informations de paiement</h3>
+      <form (ngSubmit)="onSubmit()" class="w-75">
+        <div class="form-group">
+          <div class="champ"><label  for="card-number">Numéro de carte</label></div>
+          <input type="text" id="card-number" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+          <div class="champ"><label  for="expiry-date">Date d'expiration</label></div>
+          <input type="text" id="expiry-date" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+         <div class="champ"> <label  for="cvv">CVV</label></div>
+          <input type="text" id="cvv" class="form-control" required>
+        </div>
+  
+        <div class="form"> <button type="submit" class="btn btn-primary mt-5btn-lg">Confirmer le paiement</button> </div>
+      </form>
+    </div>
+  </div>
+  

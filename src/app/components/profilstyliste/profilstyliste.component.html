@@ -1,0 +1,123 @@
+
+<!--Nav Bar Speciale-->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img class="logo" src="logo.png" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/gestiontenues">Gestion des tenues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/gestioncommandes">Gestion des commandes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/suivicommande">Suive des commandes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " href="/profilstyliste">profil du styliste</a>
+          </li>
+        </ul>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button [routerLink]="'/inscription'" class="btn btn-primary me-md-2" type="button">S'inscrire</button>
+          <button [routerLink]="'/connexion'" class="btn btn-outline-primary" type="button">Se Connecter</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <div class="containerspace">test</div>
+  
+
+  <div class="stylist-profile-container">
+    <div class="profile-header">
+      <div class="profile-image-container">
+        <input 
+          type="file" 
+          #fileInput 
+          (change)="onFileSelected($event)" 
+          accept="image/*" 
+          style="display: none;"
+        >
+        <img 
+          [src]="stylist.profileImageUrl || 'assets/default-avatar.svg'" 
+          alt="{{ stylist.name }}" 
+          class="profile-image"
+          (click)="openImageModal()"
+        >
+        <div class="edit-icon" (click)="fileInput.click()">
+          <i class="fas fa-pencil-alt"></i>
+        </div>
+      </div>
+      
+      <div class="profile-info">
+        <h1>{{ stylist.name }}</h1>
+        <div class="specialties">
+          <span *ngFor="let specialty of stylist.specialties" class="specialty-tag">
+            {{ specialty }}
+          </span>
+        </div>
+        <p class="biography">{{ stylist.biography }}</p>
+      </div>
+    </div>
+  
+    <section class="outfits-section">
+      <h2>Tenues Créées</h2>
+      <div class="outfits-grid">
+        <div *ngFor="let outfit of stylist.outfits" class="outfit-card">
+          <img [src]="outfit.imageUrl" alt="{{ outfit.name }}">
+          <div class="outfit-details">
+            <h3>{{ outfit.name }}</h3>
+            <p>{{ outfit.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="reviews-section">
+      <h2>Avis et Évaluations</h2>
+      <div class="overall-rating">
+        <div class="average-rating">
+          <span class="rating-value">{{ calculateAverageRating() }}</span>
+          <span class="rating-label">/5</span>
+        </div>
+        <div class="rating-stars">
+          <span *ngFor="let _ of [1,2,3,4,5]" class="star" 
+                [class.filled]="_ <= calculateAverageRating()">★</span>
+        </div>
+        <p class="total-reviews">({{ stylist.reviews.length }} avis)</p>
+      </div>
+  
+      <div class="reviews-list">
+        <div *ngFor="let review of stylist.reviews" class="review-card">
+          <div class="review-header">
+            <span class="review-author">{{ review.author }}</span>
+            <div class="review-rating">
+              <span *ngFor="let _ of [1,2,3,4,5]" class="star" 
+                    [class.filled]="_ <= review.rating">★</span>
+            </div>
+          </div>
+          <p class="review-comment">{{ review.comment }}</p>
+          <span class="review-date">{{ review.date | date:'mediumDate' }}</span>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Modal pour l'image agrandie -->
+    <div *ngIf="isImageModalOpen" class="image-modal" (click)="closeImageModal()">
+      <div class="image-modal-content" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeImageModal()">&times;</span>
+        <img 
+          [src]="stylist.profileImageUrl || 'assets/default-avatar.svg'" 
+          alt="{{ stylist.name }}" 
+          class="enlarged-image"
+        >
+      </div>
+    </div>
+  </div>
+  

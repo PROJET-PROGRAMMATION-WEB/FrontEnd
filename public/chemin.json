@@ -1,0 +1,49 @@
+
+  {
+    "cards": [
+      {
+        "imageUrl": "Vetement/Homme/téléchargement (1).jpeg",
+        "id":1,
+        "title": "BouBou ",
+        "text": "De la haute couture Nigerienne à prix cadeau",
+        "link": "detail/1"
+      },
+      {
+        "imageUrl": "woman-bathroom.jpg",
+        "id":2,
+        "title": "Rode de soirée en perle",
+        "text": "Serevice de qualité express",
+        "link": "detail/2",
+        "styliste":"Eyenga",
+        "styliste-id":2
+      },
+      {
+        "imageUrl": "Vetement/Homme/téléchargement (3).jpeg",
+        "id":3,
+        "title": "Boubou Longue manche",
+        "text": "Pour toutes veos ceremonies traditionnelles",
+        "link": "detail/3",
+        "styliste":"Eyenga",
+        "styliste-id":2
+      },
+      {
+        "imageUrl": "Vetement/Homme/pantalon/téléchargement (4).jpeg",
+        "id":4,
+        "title": "Pantalon BoBalaBa",
+        "text": "De l'air entre les pieds",
+        "link": "detail/4",
+        "styliste":"Eyenga",
+        "styliste-id":2
+      },
+      {
+        "imageUrl": "Vetement/Homme/téléchargement (2).jpeg",
+        "id":5,
+        "title": "boubou Senzgalais coute manche",
+        "text": "This is the third card.",
+        "link": "detail/5",
+        "styliste":"Eyenga",
+        "styliste-id":2
+      }
+    ]
+  }
+  

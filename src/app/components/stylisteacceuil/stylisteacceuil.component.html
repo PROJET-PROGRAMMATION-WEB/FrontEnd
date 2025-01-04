@@ -1,0 +1,87 @@
+<!--Nav Bar Speciale-->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img class="logo" src="logo.png" alt="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/gestiontenues">Gestion des tenues</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gestioncommandes">Gestion des commandes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/suivicommande">Suive des commandes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/profilstyliste">profil du styliste</a>
+        </li>
+      </ul>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button [routerLink]="'/inscription'" class="btn btn-primary me-md-2" type="button">S'inscrire</button>
+        <button [routerLink]="'/connexion'" class="btn btn-outline-primary" type="button">Se Connecter</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="containerspace">test</div>
+<div class="container ">
+  <h2 class="mb-4">Gestion des Tenues</h2>
+
+  <!-- Liste des tenues déjà ajoutées -->
+  <div class="mb-4">
+    <h4>Tenues déjà ajoutées :</h4>
+    <div *ngFor="let tenue of tenues" class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ tenue.nom }}</h5>
+        <p class="card-text">{{ tenue.description }}</p>
+        <p class="card-text"><strong>Prix :</strong> {{ tenue.prix }} USD</p>
+        <p class="card-text"><strong>Délai :</strong> {{ tenue.delai }}</p>
+        <div *ngFor="let photo of tenue.photos" class="mb-2">
+          <img [src]="photo" class="img-thumbnail" alt="{{ tenue.nom }}">
+        </div>
+        <button class="btn btn-warning btn-sm" (click)="modifierTenue(tenue)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="supprimerTenue(tenue)">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulaire pour ajouter/modifier une tenue -->
+  <div id="ajout">
+    <h4>{{ isEditing ? 'Modifier une Tenue' : 'Ajouter une Nouvelle Tenue' }}</h4>
+    <form (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <div class="lab"><label for="nom">Nom de la tenue</label></div>
+        <input type="text" id="nom" class="form-control" [(ngModel)]="tenueForm.nom" required>
+      </div>
+
+      <div class="form-group">
+        <div class="lab"><label for="description">Description</label></div>
+        <textarea id="description" class="form-control" [(ngModel)]="tenueForm.description" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="lab"><label for="prix">Prix</label></div>
+        <input type="number" id="prix" class="form-control" [(ngModel)]="tenueForm.prix" required>
+      </div>
+
+      <div class="form-group">
+        <div class="lab"><label for="delai">Délai de livraison</label></div>
+        <input type="text" id="delai" class="form-control" [(ngModel)]="tenueForm.delai" required>
+      </div>
+
+      <div class="form-group">
+        <div class="lab"><label for="photos">Photos de la tenue (minimum 3 photos)</label></div>
+        <input type="file" id="photos" class="form-control-file" (change)="onFilesChange($event)" multiple required>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+    </form>
+  </div>
+</div>

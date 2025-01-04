@@ -1,0 +1,85 @@
+<!--Nav Bar Speciale-->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img class="logo" src="logo.png" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/gestiontenues">Gestion des tenues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/gestioncommandes">Gestion des commandes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/suivicommande">Suive des commandes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/profilstyliste">profil du styliste</a>
+          </li>
+        </ul>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button [routerLink]="'/inscription'" class="btn btn-primary me-md-2" type="button">S'inscrire</button>
+          <button [routerLink]="'/connexion'" class="btn btn-outline-primary" type="button">Se Connecter</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <br><br><br><br><br><br><br> 
+
+  <div class="order-tracking-container">
+    <!-- En-tête -->
+    <div class="header">
+      <h1>Commandes</h1>
+      <div class="summary">
+        <p><strong>10 872,04 €</strong> chiffre d'affaires généré</p>
+        <p><strong>375</strong> Commandes</p>
+        <p><strong>420</strong> Produits vendus</p>
+      </div>
+      <button class="btn btn-primary">Télécharger les données</button>
+    </div>
+  
+    <!-- Tableau des commandes -->
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Référence</th>
+          <th>Membre</th>
+          <th>Produits</th>
+          <th>Montant</th>
+          <th>Moyen de paiement</th>
+          <th>État du paiement</th>
+          <th>État de la commande</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>21 déc. 2023</td>
+          <td><a href="#">CPC/REF150001</a></td>
+          <td>Lifa Patrick</td>
+          <td><img src="product1.png" alt="Produit 1" /></td>
+          <td>36,00 €</td>
+          <td>Carte bancaire</td>
+          <td><span class="badge paid">PAYÉ</span></td>
+          <td><span class="badge to-prepare">À PRÉPARER</span></td>
+        </tr>
+        <tr>
+          <td>20 déc. 2023</td>
+          <td><a href="#">CPC/REF150002</a></td>
+          <td>Fuhndi Arnold</td>
+          <td><img src="product2.png" alt="Produit 2" /></td>
+          <td>189,00 €</td>
+          <td>Chèque</td>
+          <td><span class="badge paid">PAYÉ</span></td>
+          <td><span class="badge to-send">ENVOYÉ</span></td>
+        </tr>
+        <!-- Ajouter d'autres lignes si nécessaire -->
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,60 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(90deg,rgb(192, 193, 226),rgb(4, 4, 75));
+    width: 100%;
+    color: white;
+    position: fixed;
+    z-index: 1;
+    
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav-links a:hover {
+    color: #f0a500;
+  }
+  .logo{
+    height: 10%;
+    width: 10%;
+  }
+a{
+  font-size: larger;
+}
+
+/*Embellir la navbar*/
+
+/* Augmenter la taille des liens */
+.nav-link {
+  font-size: 1.25rem; /* Taille des liens augmentée */
+  transition: all 0.3s ease; /* Transition fluide pour les interactions */
+}
+
+/* Souligner l'onglet actif avec un trait bleu épais */
+.nav-link:hover, 
+.nav-link:focus, 
+.nav-link.active {
+  text-decoration: underline;
+  text-decoration-color: blue;
+  text-decoration-thickness: 3px; /* Épaisseur du soulignement */
+}
+
+/* Ajustements pour une meilleure lisibilité et clarté */
+.navbar-nav .nav-link {
+  color: #333; /* Couleur par défaut des liens */
+}
+
+.nav-link:hover {
+  color: #0056b3; /* Couleur légèrement différente au survol */
+}

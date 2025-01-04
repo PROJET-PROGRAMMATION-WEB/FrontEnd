@@ -1,0 +1,9 @@
+<div class="card" *ngFor="let card of cards" >
+    <img [src]="card.imageUrl" class="card-img-top" [alt]="card.title" />
+    <div class="card-body">
+      <h5 class="card-title">{{ card.title }}</h5>
+      <p class="card-text">{{ card.text }}</p>
+      <p class="card-text">Réalisé par <strong>{{ card.styliste}}</strong></p>
+      <a [href]="card.link"  class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>

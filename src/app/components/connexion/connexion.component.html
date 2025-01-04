@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <h2>Connexion</h2>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" id="email" class="form-control" placeholder="Votre email">
+        <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="error">
+          Email invalide
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" formControlName="password" id="password" class="form-control" placeholder="Votre mot de passe">
+        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error">
+          Le mot de passe doit contenir au moins 6 caractères
+        </div>
+      </div>
+  
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid || isLoading">
+        <span *ngIf="isLoading">Connexion en cours...</span>
+        <span *ngIf="!isLoading" [routerLink]="'/gestiontenues'">Se connecter</span>
+      </button>
+  
+      <div class="signup-link">
+        Pas de compte ? 
+        <a (click)="openRoleSelectionModal()">Inscrivez-vous</a>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Modal pour choisir le rôle -->
+  <div *ngIf="isModalOpen" class="role-selection-modal">
+    <div class="modal-overlay" (click)="closeRoleSelectionModal()"></div>
+    <div class="modal-content">
+      <h3>Choisissez votre rôle</h3>
+      <p>Pour vous inscrire, sélectionnez votre rôle :</p>
+      <div class="role-buttons">
+        <button class="btn btn-client" (click)="redirectToSignup('client')">Client</button>
+        <button class="btn btn-stylist" (click)="redirectToSignup('stylist')">Styliste</button>
+      </div>
+      <button class="btn btn-close" (click)="closeRoleSelectionModal()">Annuler</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<br><br><br><br><br>
+<p>profil works!</p>
+<div class="monprofil-profile-container">
+    <div class="profile-header">
+      <div class="profile-image-container">
+        <input 
+          type="file" 
+          #fileInput 
+          (change)="onFileSelected($event)" 
+          accept="image/*" 
+          style="display: none;"
+        >
+        <img 
+          [src]="monprofil.profileImageUrl || 'assets/default-avatar.svg'" 
+          alt="{{ monprofil.name }}" 
+          class="profile-image"
+          (click)="openImageModal()"
+        >
+        <div class="edit-icon" (click)="fileInput.click()">
+          <i class="fas fa-pencil-alt"></i>
+        </div>
+      </div>
+      
+      <div class="profile-info">
+        <h1>{{ monprofil.name }}</h1>
+        <div class="specialties">
+          <strong> Mes principaux gouts sont </strong>
+          <strong *ngFor="let specialty of monprofil.gout" class="specialty-tag">
+            {{ specialty }}
+          </strong>
+        </div>
+        <p class="biography">{{ monprofil.biography }}</p>
+      </div>
+    </div>
+  
+    <div class="container mt-5">
+      <h2 class="mb-4">Formulaire de Mesures Physiques</h2>
+      <form>
+        <!-- Mesures physiques -->
+        <h3 class="mt-4">Mesures physiques</h3>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="taille" class="form-label">Taille (cm)</label>
+            <input type="number" class="form-control" id="taille" name="taille" placeholder="Ex: 170" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="poids" class="form-label">Poids (kg)</label>
+            <input type="number" class="form-control" id="poids" name="poids" placeholder="Ex: 65" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="tour_poitrine" class="form-label">Tour de poitrine (cm)</label>
+            <input type="number" class="form-control" id="tour_poitrine" name="tour_poitrine" placeholder="Ex: 90" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="tour_taille" class="form-label">Tour de taille (cm)</label>
+            <input type="number" class="form-control" id="tour_taille" name="tour_taille" placeholder="Ex: 70" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="tour_bassin" class="form-label">Tour de bassin (cm)</label>
+            <input type="number" class="form-control" id="tour_bassin" name="tour_bassin" placeholder="Ex: 100" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="longueur_bras" class="form-label">Longueur des bras (cm)</label>
+            <input type="number" class="form-control" id="longueur_bras" name="longueur_bras" placeholder="Ex: 60" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="longueur_jambe" class="form-label">Longueur des jambes (cm)</label>
+            <input type="number" class="form-control" id="longueur_jambe" name="longueur_jambe" placeholder="Ex: 90" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="largeur_epaule" class="form-label">Largeur des épaules (cm)</label>
+            <input type="number" class="form-control" id="largeur_epaule" name="largeur_epaule" placeholder="Ex: 45" required>
+          </div>
+        </div>
+  
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-primary mt-3">Soumettre les mesures</button>
+      </form>
+    </div>
+  
+    
+  
+    <!-- Modal pour l'image agrandie -->
+    <div *ngIf="isImageModalOpen" class="image-modal" (click)="closeImageModal()">
+      <div class="image-modal-content" (click)="$event.stopPropagation()">
+        <span class="close-modal" (click)="closeImageModal()">&times;</span>
+        <img 
+          [src]="monprofil.profileImageUrl || 'assets/default-avatar.svg'" 
+          alt="{{ monprofil.name }}" 
+          class="enlarged-image"
+        >
+      </div>
+    </div>
+  </div>
+  

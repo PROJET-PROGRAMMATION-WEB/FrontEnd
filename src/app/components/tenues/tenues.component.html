@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+
+<div class="filters">
+    <label for="category-filter">Catégorie :</label>
+    <select id="category-filter" [(ngModel)]="selectedCategory" (change)="applyFilters()">
+      <option value="">Toutes</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  
+    <label for="gender-filter">Genre :</label>
+    <select id="gender-filter" [(ngModel)]="selectedGender" (change)="applyFilters()">
+      <option value="">Tous</option>
+      <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+    </select>
+  
+    <label for="stylist-filter">Styliste :</label>
+    <select id="stylist-filter" [(ngModel)]="selectedStylist" (change)="applyFilters()">
+      <option value="">Tous</option>
+      <option *ngFor="let stylist of stylists" [value]="stylist">{{ stylist }}</option>
+    </select>
+  
+    <label for="sort-order">Trier par prix :</label>
+    <select id="sort-order" [(ngModel)]="sortOrder" (change)="sortCards()">
+      <option value="asc">Croissant</option>
+      <option value="desc">Décroissant</option>
+    </select>
+  </div>
+  
+  <!-- Liste des cartes -->
+  <div class="container d-flex flex-wrap justify-content-between">
+    <div class="card" *ngFor="let card of filteredCards">
+      <img [src]="card.imageUrl" class="card-img-top" [alt]="card.title" />
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.text }}</p>
+        <p class="card-text">Prix : {{ card.prix }} FCFA</p>
+        <a [href]="card.link" class="btn btn-primary">Voir plus</a>
+      </div>
+    </div>
+  </div>
+  
